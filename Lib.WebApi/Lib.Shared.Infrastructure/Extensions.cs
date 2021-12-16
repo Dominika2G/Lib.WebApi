@@ -1,8 +1,11 @@
-﻿using System;
+﻿
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Lib.Shared.Infrastructure
 {
-    public class Extensions
+    public static class Extensions
     {
+     
     }
 }

@@ -1,3 +1,4 @@
+using Lib.WebApi.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +27,7 @@ namespace Lib.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddWebApiInfrastructure(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +43,7 @@ namespace Lib.WebApi
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseWebApiInfrastructure();
 
             app.UseEndpoints(endpoints =>
             {
