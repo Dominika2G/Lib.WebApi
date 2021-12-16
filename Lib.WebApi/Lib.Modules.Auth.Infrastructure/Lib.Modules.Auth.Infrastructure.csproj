@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lib.Modules.Auth.Domain\Lib.Modules.Auth.Domain.csproj" />
+    <ProjectReference Include="..\Lib.Shared.Auth\Lib.Shared.Auth.csproj" />
+    <ProjectReference Include="..\Lib.Shared.Infrastructure\Lib.Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
