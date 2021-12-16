@@ -1,3 +1,4 @@
+using Lib.Modules.Auth.Application;
 using Lib.WebApi.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +28,7 @@ namespace Lib.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddAuthModule();
             services.AddWebApiInfrastructure(Configuration);
         }
 
