@@ -20,7 +20,9 @@ namespace Lib.WebApi
                     Version = "v1"
                 });
 
-                /*s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                //s.CustomSchemaIds(ss => ss.FullName);
+
+                s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
                     Type = SecuritySchemeType.Http,
@@ -41,7 +43,7 @@ namespace Lib.WebApi
                         },
                         Array.Empty<string>()
                     }
-                });*/
+                });
             });
 
             return services;
