@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="LinqKit.Microsoft.EntityFrameworkCore" Version="3.1.23" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.22" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lib.Shared.Data\Lib.Shared.Data.csproj" />
+  </ItemGroup>
+
+</Project>
