@@ -28,6 +28,17 @@ namespace Lib.Modules.Auth.Application.Commands
             }
             public async Task<string> Handle(Command command, CancellationToken cancellationToken)
             {
+                var newUser = new User()
+                {
+                    FirstName = "Test1",
+                    LastName = "Test1",
+                    Email = "Test1",
+                    RoleId = 1,
+                    PasswordHash = "password",
+                    Class = "2c"
+                };
+
+                await _userRepository.AddAsync(newUser);
                 return _userRepository.getData();
             }
         }

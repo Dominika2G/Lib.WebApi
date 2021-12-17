@@ -17,8 +17,4 @@
     <ProjectReference Include="..\Lib.Shared.Data\Lib.Shared.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>
