@@ -6,26 +6,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Lib.WebApi.Controllers
-{
-    public class AuthController : BaseController
-    {
-        [HttpGet]
-        public ActionResult<BaseResponse> Get()
-        {
-            var response = new BaseResponse
-            {
-                Status = "success",
-                Message = "I'm working fine!"
-            };
-            return Ok(response);
-        }
+namespace Lib.WebApi.Controllers;
 
-        [HttpPost("register")]
-        public async Task<ActionResult<string>> Register()
+public class AuthController : BaseController
+{
+    [HttpGet]
+    public ActionResult<BaseResponse> Get()
+    {
+        var response = new BaseResponse
         {
-            var result = await Mediator.Send(new Register.Command());
-            return Ok(result);
-        }
+            Status = "success",
+            Message = "I'm working fine!"
+        };
+        return Ok(response);
+    }
+
+    [HttpPost("register")]
+    public async Task<ActionResult<string>> Register()
+    {
+        var result = await Mediator.Send(new Register.Command());
+        return Ok(result);
     }
 }
+

@@ -6,31 +6,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Lib.WebApi
+namespace Lib.WebApi;
+public static class SwaggerExtension
 {
-    public static class SwaggerExtension
+    public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
     {
-        public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
+        services.AddSwaggerGen(s =>
         {
-            services.AddSwaggerGen(s =>
+            s.SwaggerDoc("v1", new OpenApiInfo
             {
-                s.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "Lib.WebApi",
-                    Version = "v1"
-                });
+                Title = "Lib.WebApi",
+                Version = "v1"
+            });
 
-                //s.CustomSchemaIds(ss => ss.FullName);
+            //s.CustomSchemaIds(ss => ss.FullName);
 
-                s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Name = "Authorization",
-                    Type = SecuritySchemeType.Http,
-                    Scheme = "Bearer",
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header
-                });
-                s.AddSecurityRequirement(new OpenApiSecurityRequirement
+            s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Type = SecuritySchemeType.Http,
+                Scheme = "Bearer",
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header
+            });
+            s.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
                         new OpenApiSecurityScheme
@@ -44,21 +43,20 @@ namespace Lib.WebApi
                         Array.Empty<string>()
                     }
                 });
-            });
+        });
 
-            return services;
-        }
+        return services;
+    }
 
-        public static IApplicationBuilder UseSwaggerDocumentation(this IApplicationBuilder app)
+    public static IApplicationBuilder UseSwaggerDocumentation(this IApplicationBuilder app)
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI(current =>
         {
-            app.UseSwagger();
-            app.UseSwaggerUI(current => 
-            {
-                current.SwaggerEndpoint("/swagger/v1/swagger.json", "Lib.WebApi");
-                current.RoutePrefix = string.Empty;
-            });
+            current.SwaggerEndpoint("/swagger/v1/swagger.json", "Lib.WebApi");
+            current.RoutePrefix = string.Empty;
+        });
 
-            return app;
-        }
+        return app;
     }
 }
