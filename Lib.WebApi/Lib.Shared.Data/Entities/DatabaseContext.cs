@@ -41,7 +41,7 @@ namespace Lib.Shared.Data.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=D-GORALCZYK2\SQLEXPRESS;Initial Catalog=LibraryDB;Integrated Security=True;MultipleActiveResultSets=True");
+                optionsBuilder.UseSqlServer(@"Data Source=D-GORALCZYK2\SQLEXPRESS;Initial Catalog=LibraryDB2;Integrated Security=True;MultipleActiveResultSets=True");
             }
         }
 

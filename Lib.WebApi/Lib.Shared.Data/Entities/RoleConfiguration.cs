@@ -14,7 +14,7 @@ namespace Lib.Shared.Data.Entities
             builder.ToTable("Role", "dbo");
             builder.HasKey(x => x.RoleId).HasName("PK_Role").IsClustered();
 
-            builder.Property(x => x.RoleId).HasColumnName(@"RoleId").HasColumnType("bigint").IsRequired().ValueGeneratedNever();
+            builder.Property(x => x.RoleId).HasColumnName(@"RoleId").HasColumnType("bigint").IsRequired().ValueGeneratedOnAdd().UseIdentityColumn();
             builder.Property(x => x.RoleName).HasColumnName(@"RoleName").HasColumnType("varchar(50)").IsRequired().IsUnicode(false).HasMaxLength(50);
         }
     }

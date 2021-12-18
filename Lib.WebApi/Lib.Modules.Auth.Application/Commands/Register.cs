@@ -34,8 +34,8 @@ namespace Lib.Modules.Auth.Application.Commands
                     LastName = "Test1",
                     Email = "Test1",
                     RoleId = 1,
-                    PasswordHash = "password",
-                    Class = "2c"
+                    PasswordHash = PasswordProtection.Sha256Hash("password"),
+                    Class = "5c"
                 };
 
                 await _userRepository.AddAsync(newUser);

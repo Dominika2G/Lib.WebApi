@@ -14,11 +14,11 @@ namespace Lib.Shared.Data.Entities
             builder.ToTable("Comment", "dbo");
             builder.HasKey(x => x.CommentId).HasName("PK_Comment").IsClustered();
 
-            builder.Property(x => x.CommentId).HasColumnName(@"CommentId").HasColumnType("bigint").IsRequired().ValueGeneratedNever();
+            builder.Property(x => x.CommentId).HasColumnName(@"CommentId").HasColumnType("bigint").IsRequired().ValueGeneratedOnAdd().UseIdentityColumn();
             builder.Property(x => x.UserId).HasColumnName(@"UserId").HasColumnType("bigint").IsRequired();
-            builder.Property(x => x.Description).HasColumnName(@"Description").HasColumnType("varchar(250)").IsRequired().IsUnicode(false).HasMaxLength(250);
+            builder.Property(x => x.Description).HasColumnName(@"Description").HasColumnType("varchar(500)").IsRequired().IsUnicode(false).HasMaxLength(500);
             builder.Property(x => x.AddingDate).HasColumnName(@"AddingDate").HasColumnType("date").IsRequired();
-            builder.Property(x => x.Mark).HasColumnName(@"Mark").HasColumnType("int").IsRequired();
+            builder.Property(x => x.Rating).HasColumnName(@"Rating").HasColumnType("int").IsRequired();
 
             // Foreign keys
             builder.HasOne(a => a.User).WithMany(b => b.Comments).HasForeignKey(c => c.UserId).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Comment_User");
