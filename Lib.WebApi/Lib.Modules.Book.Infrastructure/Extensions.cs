@@ -12,6 +12,7 @@ public static class Extensions
 
         services.AddDbContext<IDatabaseContext, DatabaseContext>();
         services.AddScoped<IBookRepository, BookRepository>();
+        services.AddScoped<IAuthorRepository, AuthorRepository>();
         return services;
     }
 }
