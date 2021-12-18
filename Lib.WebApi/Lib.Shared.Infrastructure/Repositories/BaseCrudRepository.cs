@@ -31,4 +31,31 @@ public abstract class BaseCrudRepository<TEntity> : BaseReadOnlyRepository<TEnti
         await DbSet.AddAsync(entity);
         await Context.SaveChangesAsync();
     }
+
+    public virtual void Update(TEntity entity)
+    {
+        DbSet.Attach(entity);
+        SetModified(entity);
+    }
+
+    public virtual void Delete(TEntity entity)
+    {
+        DbSet.Attach(entity);
+        SetDeleted(entity);
+    }
+
+    private void SetModified(TEntity entity)
+    {
+        Context.Entry(entity).State = EntityState.Modified;
+    }
+
+    private void SetDeleted(TEntity entity)
+    {
+        Context.Entry(entity).State = EntityState.Deleted;
+    }
+
+    public virtual async Task SaveChangesAsync()
+    {
+        await Context.SaveChangesAsync();
+    }
 }

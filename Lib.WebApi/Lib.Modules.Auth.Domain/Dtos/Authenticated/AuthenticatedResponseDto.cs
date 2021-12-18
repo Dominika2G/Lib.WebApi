@@ -8,4 +8,5 @@ namespace Lib.Modules.Auth.Domain.Dtos.Authenticated;
 
 public class AuthenticatedResponseDto
 {
+
 }

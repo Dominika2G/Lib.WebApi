@@ -9,4 +9,10 @@ namespace Lib.Shared.Abstractions.Repositories;
 public interface IBaseCrudRepository<TEntity> : IBaseReadOnlyRepository<TEntity>
 {
     Task AddAsync(TEntity entity);
+
+    void Update(TEntity entity);
+
+    void Delete(TEntity entity);
+
+    Task SaveChangesAsync();
 }

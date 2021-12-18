@@ -23,4 +23,13 @@ public class UserRepository : BaseCrudRepository<User>, IUserRepository
     {
         return "MediatR działa";
     }
+
+    public bool CheckPassword(string userPassword, string dtoPassword)
+    {
+        if (userPassword == dtoPassword)
+        {
+            return true;
+        }
+        return false;
+    }
 }
