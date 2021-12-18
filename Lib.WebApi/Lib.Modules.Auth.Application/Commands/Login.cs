@@ -17,12 +17,12 @@ namespace Lib.Modules.Auth.Application.Commands;
 
 public abstract class Login
 {   
-    public class Command : IRequest<string>
+    public class Command : IRequest<AuthenticatedResponseDto>
     {
         public LoginRequestDto Dto { get; set; }
     }
 
-    public class Handler :  IRequestHandler<Command, string>
+    public class Handler :  IRequestHandler<Command, AuthenticatedResponseDto>
     {
         private readonly IUserRepository _userRepository;
 
@@ -31,7 +31,7 @@ public abstract class Login
             _userRepository = userRepository;
         }
 
-        public async Task<string> Handle(Command command, CancellationToken cancellationToken)
+        public async Task<AuthenticatedResponseDto> Handle(Command command, CancellationToken cancellationToken)
         {
             var email = command.Dto.Email;
 
@@ -39,10 +39,8 @@ public abstract class Login
                 filter: user => user.Email == email
                 );
 
-            if(currentUser != null && _userRepository.CheckPassword(currentUser.PasswordHash, PasswordProtection.Sha256Hash(command.Dto.Password)))
+            if (currentUser != null && _userRepository.CheckPassword(currentUser.PasswordHash, PasswordProtection.Sha256Hash(command.Dto.Password)))
             {
-
-
                 var tokenDescription = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new Claim[] {
@@ -57,13 +55,26 @@ public abstract class Login
                 var securityToken = tokenHandler.CreateToken(tokenDescription);
                 var accessToken = tokenHandler.WriteToken(securityToken);
 
-                return accessToken.ToString();
-            } else
-            {
-                return "Coś poszło nie tak";
-            }
+                var response = new AuthenticatedResponseDto()
+                {
+                    Token = accessToken,
+                    RoleId = currentUser.RoleId,
+                    UserId = currentUser.UserId
+                };
 
-            
+                return response;
+            }
+            else
+            {
+                var response = new AuthenticatedResponseDto()
+                {
+                    Token = "Brak tokenu",
+                    RoleId = 0,
+                    UserId = 0
+                };
+                return response;
+
+            }
         }
     }
 }

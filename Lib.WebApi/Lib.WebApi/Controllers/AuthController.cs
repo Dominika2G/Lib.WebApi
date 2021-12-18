@@ -1,7 +1,9 @@
 ﻿using Lib.Modules.Auth.Application.Commands;
+using Lib.Modules.Auth.Domain.Dtos.Authenticated;
 using Lib.Modules.Auth.Domain.Dtos.ChangePassword;
 using Lib.Modules.Auth.Domain.Dtos.Login;
 using Lib.Shared.Abstractions.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -31,12 +33,16 @@ public class AuthController : BaseController
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<string>> Login([FromBody] LoginRequestDto requestDto)
+    public async Task<ActionResult<AuthenticatedResponseDto>> Login([FromBody] LoginRequestDto requestDto)
     {
         var result = await Mediator.Send(new Login.Command() { Dto = requestDto });
         return Ok(result);
     }
 
+
+    //TODO 
+    //Niedziałająca metoda
+    [Authorize]
     [HttpPost("changePassword")]
     public async Task<ActionResult<string>> Changepassword([FromBody] ChangePasswordRequestDto requestDto)
     {

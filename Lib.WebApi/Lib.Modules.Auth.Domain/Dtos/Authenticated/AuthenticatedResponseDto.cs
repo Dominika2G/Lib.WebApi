@@ -8,5 +8,7 @@ namespace Lib.Modules.Auth.Domain.Dtos.Authenticated;
 
 public class AuthenticatedResponseDto
 {
-
+    public string Token { get; set; }
+    public long RoleId { get; set; }
+    public long UserId { get; set; }
 }

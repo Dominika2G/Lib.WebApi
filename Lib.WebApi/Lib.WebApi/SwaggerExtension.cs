@@ -20,6 +20,7 @@ public static class SwaggerExtension
             });
 
             //s.CustomSchemaIds(ss => ss.FullName);
+            s.CustomSchemaIds(ss => ss.FullName);
 
             s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
