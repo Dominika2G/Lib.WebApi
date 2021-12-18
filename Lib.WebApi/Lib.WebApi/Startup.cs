@@ -1,4 +1,5 @@
 using Lib.Modules.Auth.Application;
+using Lib.Modules.Book.Application;
 using Lib.WebApi.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +30,7 @@ public class Startup
     {
         services.AddControllers();
         services.AddAuthModule();
+        services.AddBookModule();
         services.AddWebApiInfrastructure(Configuration);
     }
 
