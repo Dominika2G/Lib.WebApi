@@ -17,6 +17,7 @@ public static class Extensions
         var assembliesApplication = new List<Assembly>
             {
                 AppDomain.CurrentDomain.Load("Lib.Modules.Auth.Application"),
+                AppDomain.CurrentDomain.Load("Lib.Modules.Book.Application"),
             };
 
         services.AddSwaggerDocumentation();

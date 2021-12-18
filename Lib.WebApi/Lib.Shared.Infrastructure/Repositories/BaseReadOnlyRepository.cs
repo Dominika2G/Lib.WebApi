@@ -1,6 +1,7 @@
 ﻿using Lib.Shared.Abstractions.Repositories;
 using Lib.Shared.Data.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +25,19 @@ public abstract class BaseReadOnlyRepository<TEntity> : IBaseReadOnlyRepository<
     public virtual async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)
     {
         return await DbSet.AnyAsync(predicate);
+    }
+
+    public virtual async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>>? filter = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
+    {
+        IQueryable<TEntity> query = DbSet;
+
+        if (include != null)
+            query = include(query);
+
+        if (filter != null)
+            query = query.Where(filter);
+
+        return await query.FirstOrDefaultAsync().ConfigureAwait(false);
     }
 }

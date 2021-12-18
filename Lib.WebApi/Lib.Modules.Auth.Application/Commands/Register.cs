@@ -32,9 +32,9 @@ namespace Lib.Modules.Auth.Application.Commands
                 {
                     FirstName = "Test1",
                     LastName = "Test1",
-                    Email = "Test1",
+                    Email = "Test3",
                     RoleId = 1,
-                    PasswordHash = PasswordProtection.Sha256Hash("password"),
+                    PasswordHash = PasswordProtection.Sha256Hash("password3"),
                     Class = "5c"
                 };
 
