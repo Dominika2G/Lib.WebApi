@@ -15,4 +15,9 @@ public interface IBaseReadOnlyRepository<TEntity>
     Task<TEntity?> GetAsync(
         Expression<Func<TEntity, bool>>? filter = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null);
+
+    Task<ICollection<TEntity>> GetAllAsync(
+        Expression<Func<TEntity, bool>>? filter = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null);
 }

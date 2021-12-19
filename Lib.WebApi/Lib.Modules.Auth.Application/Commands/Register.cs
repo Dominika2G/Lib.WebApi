@@ -30,12 +30,12 @@ namespace Lib.Modules.Auth.Application.Commands
             {
                 var newUser = new User()
                 {
-                    FirstName = "Test1",
-                    LastName = "Test1",
-                    Email = "Test3",
-                    RoleId = 1,
-                    PasswordHash = PasswordProtection.Sha256Hash("password3"),
-                    Class = "5c"
+                    FirstName = command.Dto.FirstName,
+                    LastName = command.Dto.LastName,
+                    Email = command.Dto.Email,
+                    RoleId = command.Dto.RoleId,
+                    PasswordHash = PasswordProtection.Sha256Hash(command.Dto.Password),
+                    Class = command.Dto.Class
                 };
 
                 await _userRepository.AddAsync(newUser);

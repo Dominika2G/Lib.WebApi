@@ -2,6 +2,7 @@
 using Lib.Modules.Auth.Domain.Dtos.Authenticated;
 using Lib.Modules.Auth.Domain.Dtos.ChangePassword;
 using Lib.Modules.Auth.Domain.Dtos.Login;
+using Lib.Modules.Auth.Domain.Dtos.Register;
 using Lib.Shared.Abstractions.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -26,9 +27,9 @@ public class AuthController : BaseController
     }
 
     [HttpPost("register")]
-    public async Task<ActionResult<string>> Register()
+    public async Task<ActionResult<string>> Register([FromBody] RegisterRequestDto requestDto)
     {
-        var result = await Mediator.Send(new Register.Command());
+        var result = await Mediator.Send(new Register.Command() { Dto = requestDto });
         return Ok(result);
     }
 

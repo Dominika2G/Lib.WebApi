@@ -10,9 +10,9 @@ namespace Lib.WebApi.Controllers
     public class BookController : BaseController
     {
         [HttpPost("AddBook")]
-        public async Task<ActionResult<string>> AddBook()
+        public async Task<ActionResult<string>> AddBook([FromBody] AddBookRequestDto requestDto)
         {
-            var result = await Mediator.Send(new AddBook.Command());
+            var result = await Mediator.Send(new AddBook.Command() { Dto = requestDto });
             return Ok(result);
         }
 
