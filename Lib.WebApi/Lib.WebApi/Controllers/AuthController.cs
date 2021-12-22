@@ -1,4 +1,5 @@
 ﻿using Lib.Modules.Auth.Application.Commands;
+using Lib.Modules.Auth.Application.Queries;
 using Lib.Modules.Auth.Domain.Dtos.Authenticated;
 using Lib.Modules.Auth.Domain.Dtos.ChangePassword;
 using Lib.Modules.Auth.Domain.Dtos.Login;
@@ -37,6 +38,13 @@ public class AuthController : BaseController
     public async Task<ActionResult<AuthenticatedResponseDto>> Login([FromBody] LoginRequestDto requestDto)
     {
         var result = await Mediator.Send(new Login.Command() { Dto = requestDto });
+        return Ok(result);
+    }
+
+    [HttpGet("getUsers")]
+    public async Task<ActionResult<AuthenticatedResponseDto>> GetUsers()
+    {
+        var result = await Mediator.Send(new GetAllUsers.Query());
         return Ok(result);
     }
 

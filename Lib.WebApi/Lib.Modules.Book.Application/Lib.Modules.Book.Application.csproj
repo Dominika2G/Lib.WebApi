@@ -10,8 +10,4 @@
     <ProjectReference Include="..\Lib.Modules.Book.Infrastructure\Lib.Modules.Book.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Queries\" />
-  </ItemGroup>
-
 </Project>

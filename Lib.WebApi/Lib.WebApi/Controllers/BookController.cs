@@ -1,5 +1,6 @@
 ﻿using Lib.Modules.Auth.Domain.Dtos.Login;
 using Lib.Modules.Book.Application.Commands;
+using Lib.Modules.Book.Application.Queries;
 using Lib.Modules.Book.Domain.Dto;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,13 @@ namespace Lib.WebApi.Controllers
         public async Task<ActionResult<string>> AddAuthor([FromBody] AddAuthorRequestDto requestDto)
         {
             var result = await Mediator.Send(new AddAuthor.Command() { Dto = requestDto });
+            return Ok(result);
+        }
+
+        [HttpGet("AllBooks")]
+        public async Task<ActionResult<string>> AllBooks()
+        {
+            var result = await Mediator.Send(new GetAllBooks.Query());
             return Ok(result);
         }
     }
