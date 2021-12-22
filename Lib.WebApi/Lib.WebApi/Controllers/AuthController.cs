@@ -51,7 +51,7 @@ public class AuthController : BaseController
 
     //TODO 
     //Niedziałająca metoda
-    [Authorize]
+/*    [Authorize]*/
     [HttpPost("changePassword")]
     public async Task<ActionResult<string>> Changepassword([FromBody] ChangePasswordRequestDto requestDto)
     {
