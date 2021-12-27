@@ -13,9 +13,9 @@ namespace Lib.Shared.Data.Entities
     {
         public long CommentId { get; set; } // CommentId (Primary key)
         public long UserId { get; set; } // UserId
-        public string Description { get; set; } // Description (length: 250)
+        public string Description { get; set; } // Description (length: 500)
         public DateTime AddingDate { get; set; } // AddingDate
-        public int Mark { get; set; } // Mark
+        public int Rating { get; set; } // Rating
 
         // Reverse navigation
 

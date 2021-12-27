@@ -17,10 +17,10 @@ namespace Lib.Shared.Data.Entities
             builder.Property(x => x.BookId).HasColumnName(@"BookId").HasColumnType("bigint").IsRequired().ValueGeneratedNever();
             builder.Property(x => x.UserId).HasColumnName(@"UserId").HasColumnType("bigint").IsRequired().ValueGeneratedNever();
             builder.Property(x => x.LoanDate).HasColumnName(@"LoanDate").HasColumnType("date").IsRequired().ValueGeneratedNever();
-            builder.Property(x => x.ReturnDate).HasColumnName(@"ReturnDate").HasColumnType("date").IsRequired().ValueGeneratedNever();
+            builder.Property(x => x.ReturnDate).HasColumnName(@"ReturnDate").HasColumnType("bigint").IsRequired().ValueGeneratedNever();
 
             // Foreign keys
-            builder.HasOne(a => a.Book).WithMany(b => b.Borrows).HasForeignKey(c => c.BookId).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Borrows_Book");
+            builder.HasOne(a => a.Book).WithMany(b => b.Borrows).HasForeignKey(c => c.UserId).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Borrows_Book");
             builder.HasOne(a => a.User).WithMany(b => b.Borrows).HasForeignKey(c => c.UserId).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Borrows_User");
         }
     }

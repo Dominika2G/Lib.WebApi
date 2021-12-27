@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31424.327
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.WebApi", "Lib.WebApi\Lib.WebApi.csproj", "{2A64B622-9E46-4062-977C-5C0A8D8D5A89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lib.WebApi", "Lib.WebApi\Lib.WebApi.csproj", "{2A64B622-9E46-4062-977C-5C0A8D8D5A89}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{32A274D2-EFBB-4728-B19D-25FF51D8CB8B}"
 EndProject
@@ -11,19 +11,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{BDF6ED
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{5243C0AA-E677-4D4A-BC4F-A0F594CEBF08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Modules.Auth.Application", "Lib.Modules.Auth.Application\Lib.Modules.Auth.Application.csproj", "{CF59AD09-4A65-425C-8196-C7E81DB6ADA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lib.Modules.Auth.Application", "Lib.Modules.Auth.Application\Lib.Modules.Auth.Application.csproj", "{CF59AD09-4A65-425C-8196-C7E81DB6ADA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Modules.Auth.Domain", "Lib.Modules.Auth.Domain\Lib.Modules.Auth.Domain.csproj", "{043B5B79-1E51-433E-9A3D-02D6BB786E13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lib.Modules.Auth.Domain", "Lib.Modules.Auth.Domain\Lib.Modules.Auth.Domain.csproj", "{043B5B79-1E51-433E-9A3D-02D6BB786E13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Modules.Auth.Infrastructure", "Lib.Modules.Auth.Infrastructure\Lib.Modules.Auth.Infrastructure.csproj", "{E533B633-8AB9-4BA1-9D33-D0478F175305}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lib.Modules.Auth.Infrastructure", "Lib.Modules.Auth.Infrastructure\Lib.Modules.Auth.Infrastructure.csproj", "{E533B633-8AB9-4BA1-9D33-D0478F175305}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Shared.Abstractions", "Lib.Shared.Abstractions\Lib.Shared.Abstractions.csproj", "{81F4D425-BF26-4B57-AD78-7E2DE41FFB7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lib.Shared.Abstractions", "Lib.Shared.Abstractions\Lib.Shared.Abstractions.csproj", "{81F4D425-BF26-4B57-AD78-7E2DE41FFB7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Shared.Auth", "Lib.Shared.Auth\Lib.Shared.Auth.csproj", "{9D05AFB9-7D7C-4E3D-8247-D6126EFA2428}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lib.Shared.Auth", "Lib.Shared.Auth\Lib.Shared.Auth.csproj", "{9D05AFB9-7D7C-4E3D-8247-D6126EFA2428}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Shared.Data", "Lib.Shared.Data\Lib.Shared.Data.csproj", "{D6652622-862B-46F4-A143-5C5AB95AF085}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lib.Shared.Data", "Lib.Shared.Data\Lib.Shared.Data.csproj", "{D6652622-862B-46F4-A143-5C5AB95AF085}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Shared.Infrastructure", "Lib.Shared.Infrastructure\Lib.Shared.Infrastructure.csproj", "{452B7E4C-E86F-4404-85CC-2B4396700C2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lib.Shared.Infrastructure", "Lib.Shared.Infrastructure\Lib.Shared.Infrastructure.csproj", "{452B7E4C-E86F-4404-85CC-2B4396700C2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Book", "Book", "{2B1896D5-35A1-456F-9FAF-49073B15103A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Modules.Book.Application", "Lib.Modules.Book.Application\Lib.Modules.Book.Application.csproj", "{8C6F564B-B2C5-450F-973B-8D39BB2A08F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Modules.Book.Domain", "Lib.Modules.Book.Domain\Lib.Modules.Book.Domain.csproj", "{FFA55729-03D0-4C37-A4E9-839AC5D57860}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Modules.Book.Infrastructure", "Lib.Modules.Book.Infrastructure\Lib.Modules.Book.Infrastructure.csproj", "{5E10DC67-6339-4EB5-9828-63F7EBB29338}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +71,18 @@ Global
 		{452B7E4C-E86F-4404-85CC-2B4396700C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{452B7E4C-E86F-4404-85CC-2B4396700C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{452B7E4C-E86F-4404-85CC-2B4396700C2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C6F564B-B2C5-450F-973B-8D39BB2A08F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C6F564B-B2C5-450F-973B-8D39BB2A08F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C6F564B-B2C5-450F-973B-8D39BB2A08F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C6F564B-B2C5-450F-973B-8D39BB2A08F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFA55729-03D0-4C37-A4E9-839AC5D57860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFA55729-03D0-4C37-A4E9-839AC5D57860}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFA55729-03D0-4C37-A4E9-839AC5D57860}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFA55729-03D0-4C37-A4E9-839AC5D57860}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E10DC67-6339-4EB5-9828-63F7EBB29338}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E10DC67-6339-4EB5-9828-63F7EBB29338}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E10DC67-6339-4EB5-9828-63F7EBB29338}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E10DC67-6339-4EB5-9828-63F7EBB29338}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +96,10 @@ Global
 		{9D05AFB9-7D7C-4E3D-8247-D6126EFA2428} = {BDF6ED64-F3CB-4114-BF4D-905DD5283AF3}
 		{D6652622-862B-46F4-A143-5C5AB95AF085} = {BDF6ED64-F3CB-4114-BF4D-905DD5283AF3}
 		{452B7E4C-E86F-4404-85CC-2B4396700C2A} = {BDF6ED64-F3CB-4114-BF4D-905DD5283AF3}
+		{2B1896D5-35A1-456F-9FAF-49073B15103A} = {32A274D2-EFBB-4728-B19D-25FF51D8CB8B}
+		{8C6F564B-B2C5-450F-973B-8D39BB2A08F7} = {2B1896D5-35A1-456F-9FAF-49073B15103A}
+		{FFA55729-03D0-4C37-A4E9-839AC5D57860} = {2B1896D5-35A1-456F-9FAF-49073B15103A}
+		{5E10DC67-6339-4EB5-9828-63F7EBB29338} = {2B1896D5-35A1-456F-9FAF-49073B15103A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {31A5FF12-65CD-4047-89FA-B4A3A12708F0}

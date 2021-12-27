@@ -14,12 +14,12 @@ namespace Lib.Shared.Data.Entities
         public long BookId { get; set; } // BookId (Primary key)
         public long UserId { get; set; } // UserId (Primary key)
         public DateTime LoanDate { get; set; } // LoanDate (Primary key)
-        public DateTime ReturnDate { get; set; } // ReturnDate (Primary key)
+        public long ReturnDate { get; set; } // ReturnDate (Primary key)
 
         // Foreign keys
 
         /// <summary>
-        /// Parent Book pointed by [Borrows].([BookId]) (FK_Borrows_Book)
+        /// Parent Book pointed by [Borrows].([UserId]) (FK_Borrows_Book)
         /// </summary>
         public virtual Book Book { get; set; } // FK_Borrows_Book
 
