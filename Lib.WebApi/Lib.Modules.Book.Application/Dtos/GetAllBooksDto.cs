@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lib.Modules.Book.Application.Dtos
+namespace Lib.Modules.Book.Application.Dtos;
+
+public class GetAllBooksDto
 {
-    public class GetAllBooksDto
-    {
-        public List<BookDetailsDto> BookDetails { get; set; }
-    }
+    public List<BookDetailsDto> BookDetails { get; set; }
 }
