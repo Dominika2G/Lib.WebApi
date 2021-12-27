@@ -5,6 +5,7 @@ using Lib.Modules.Book.Domain.Dto;
 using Lib.Modules.Book.Domain.Dto.Book;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Lib.WebApi.Controllers
@@ -43,6 +44,20 @@ namespace Lib.WebApi.Controllers
         public async Task<ActionResult<string>> ChangeBookAvailable([FromBody] ChangeAvailableRequestDto requestDto)
         {
             var result = await Mediator.Send(new ChangeBookAvailable.Command() { Dto = requestDto });
+            return Ok(result);
+        }
+
+        [HttpGet("GetAuthors")]
+        public async Task<ActionResult<List<AuthorsResponseDto>>> GetAuthors()
+        {
+            var result = await Mediator.Send(new GetAutors.Query());
+            return Ok(result);
+        }
+
+        [HttpPost("BorrowBook")]
+        public async Task<ActionResult<string>> BorrowBook([FromBody] BorrowRequestDto requestDto)
+        {
+            var result = await Mediator.Send(new BorrowBook.Command() { Dto = requestDto });
             return Ok(result);
         }
     }
