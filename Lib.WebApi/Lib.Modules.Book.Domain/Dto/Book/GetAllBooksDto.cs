@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lib.Modules.Book.Application.Dtos;
+namespace Lib.Modules.Book.Domain.Dto.Book;
 
 public class GetAllBooksDto
 {

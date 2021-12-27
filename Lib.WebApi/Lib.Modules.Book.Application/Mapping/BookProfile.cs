@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using Lib.Modules.Book.Application.Dtos;
+using Lib.Modules.Book.Domain.Dto.Book;
 using Lib.Shared.Data.Entities;
 
 namespace Lib.Modules.Book.Application.Mapping;

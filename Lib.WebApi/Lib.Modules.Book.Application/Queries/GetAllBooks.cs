@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Lib.Modules.Book.Application.Dtos;
+using Lib.Modules.Book.Domain.Dto.Book;
 using Lib.Modules.Book.Domain.Interfaces;
 using MediatR;
 using System;
