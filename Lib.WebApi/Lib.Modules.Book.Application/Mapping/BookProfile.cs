@@ -24,5 +24,17 @@ public class BookProfile : Profile
                 opt => opt.MapFrom(x => x.Author.LastName))
             .ForMember(book => book.IsAvailable,
                 opt => opt.MapFrom(x => x.IsAvailable));
+
+        CreateMap<Lib.Shared.Data.Entities.Book, BookDetailResponseDto>()
+            .ForMember(book => book.Title,
+                opt => opt.MapFrom(x => x.Title))
+            .ForMember(book => book.Description,
+                opt => opt.MapFrom(x => x.Description))
+            .ForMember(book => book.IsAvailable,
+                opt => opt.MapFrom(x => x.IsAvailable));
+            /*.ForMember(book => book.AuthorFirstName, 
+                opt => opt.MapFrom(x => x.Author.FirstName))
+            .ForMember(book => book.AuthorLastName,
+                opt => opt.MapFrom(x => x.Author.LastName));*/
     }
 }
