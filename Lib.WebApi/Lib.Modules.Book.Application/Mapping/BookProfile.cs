@@ -13,29 +13,21 @@ public class BookProfile : Profile
 {
     public BookProfile()
     {
-        CreateMap<Lib.Shared.Data.Entities.Book, BookDetailsDto>()
+        CreateMap<BookView, BookDetailsDto>()
             .ForMember(book => book.BookId,
                 opt => opt.MapFrom(x => x.BookId))
             .ForMember(book => book.Title,
                 opt => opt.MapFrom(x => x.Title))
             .ForMember(book => book.AuthorFirstName,
-                opt => opt.MapFrom(x => x.Author.FirstName))
+                opt => opt.MapFrom(x => x.FirstName))
             .ForMember(book => book.AuthorLastName,
-                opt => opt.MapFrom(x => x.Author.LastName))
-            .ForMember(book => book.IsAvailable,
-                opt => opt.MapFrom(x => x.IsAvailable));
-
-        /*CreateMap<Lib.Shared.Data.Entities.Book, BookDetailResponseDto>()
-            .ForMember(book => book.Title,
-                opt => opt.MapFrom(x => x.Title))
-            .ForMember(book => book.Description,
-                opt => opt.MapFrom(x => x.Description))
+                opt => opt.MapFrom(x => x.LastName))
             .ForMember(book => book.IsAvailable,
                 opt => opt.MapFrom(x => x.IsAvailable))
-            .ForMember(book => book.AuthorFirstName,
-                opt => opt.MapFrom(x => x.Author.FirstName))
-            .ForMember(book => book.AuthorLastName,
-                opt => opt.MapFrom(x => x.Author.LastName));*/
+            .ForMember(book => book.IsReserved,
+                opt => opt.MapFrom(x => x.IsReserved))
+            .ForMember(book => book.Cover, 
+                opt => opt.MapFrom(x => x.Cover));
 
         CreateMap<BookView, BookDetailResponseDto>()
             .ForMember(book => book.Title,

@@ -34,7 +34,8 @@ public abstract class AddBook
                 Description = command.Dto.Description,
                 Cover = null,
                 BarCode = command.Dto.BarCode,
-                IsAvailable = command.Dto.IsAvailable
+                IsAvailable = command.Dto.IsAvailable,
+                IsReserved = false
             };
 
             var isInBase = await _bookRepository.AnyAsync(x => x.BarCode == command.Dto.BarCode);

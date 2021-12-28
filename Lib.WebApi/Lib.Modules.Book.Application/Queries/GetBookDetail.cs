@@ -30,9 +30,6 @@ public class GetBookDetail
 
         public async Task<BookDetailResponseDto> Handle(Query query, CancellationToken cancellationToken)
         {
-           /* var currentUser = await _userRepository.GetAsync(
-                filter: user => user.Email == email
-                );*/
             var bookDetail = await _bookViewRepository.GetAsync(
                 filter: book => book.BookId == query.Dto.Id
                 );

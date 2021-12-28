@@ -12,5 +12,7 @@ public class BookDetailsDto
     public string Title { get; set; }
     public string AuthorFirstName { get; set; }
     public string AuthorLastName { get; set; }
-    public int IsAvailable { get; set; }
+    public bool IsAvailable { get; set; }
+    public bool IsReserved { get; set; }
+    public byte[] Cover { get; set; }
 }
