@@ -12,15 +12,16 @@ namespace Lib.Shared.Data.Entities
         public void Configure(EntityTypeBuilder<Borrow> builder)
         {
             builder.ToTable("Borrows", "dbo");
-            builder.HasKey(x => new { x.BookId, x.UserId, x.LoanDate, x.ReturnDate });
+            builder.HasKey(x => new { x.BookId, x.UserId, x.LoanDate, x.ReturnDate, x.RentalPeriod });
 
             builder.Property(x => x.BookId).HasColumnName(@"BookId").HasColumnType("bigint").IsRequired().ValueGeneratedNever();
             builder.Property(x => x.UserId).HasColumnName(@"UserId").HasColumnType("bigint").IsRequired().ValueGeneratedNever();
             builder.Property(x => x.LoanDate).HasColumnName(@"LoanDate").HasColumnType("date").IsRequired().ValueGeneratedNever();
-            builder.Property(x => x.ReturnDate).HasColumnName(@"ReturnDate").HasColumnType("bigint").IsRequired().ValueGeneratedNever();
+            builder.Property(x => x.ReturnDate).HasColumnName(@"ReturnDate").HasColumnType("date").IsRequired().ValueGeneratedNever();
+            builder.Property(x => x.RentalPeriod).HasColumnName(@"RentalPeriod").HasColumnType("int").IsRequired().ValueGeneratedNever();
 
             // Foreign keys
-            builder.HasOne(a => a.Book).WithMany(b => b.Borrows).HasForeignKey(c => c.UserId).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Borrows_Book");
+            builder.HasOne(a => a.Book).WithMany(b => b.Borrows).HasForeignKey(c => c.BookId).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Borrows_Book");
             builder.HasOne(a => a.User).WithMany(b => b.Borrows).HasForeignKey(c => c.UserId).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Borrows_User");
         }
     }

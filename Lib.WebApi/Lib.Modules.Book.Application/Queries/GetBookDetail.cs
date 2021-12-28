@@ -19,12 +19,12 @@ public class GetBookDetail
 
     public class Handler : IRequestHandler<Query, BookDetailResponseDto>
     {
-        private readonly IBookRepository _bookRepository;
+        private readonly IBookViewRepository _bookViewRepository;
         private readonly IMapper _mapper;
 
-        public Handler(IBookRepository userRepository, IMapper mapper)
+        public Handler(IBookViewRepository bookViewRepository, IMapper mapper)
         {
-            _bookRepository = userRepository;
+            _bookViewRepository = bookViewRepository;
             _mapper = mapper;
         }
 
@@ -33,7 +33,7 @@ public class GetBookDetail
            /* var currentUser = await _userRepository.GetAsync(
                 filter: user => user.Email == email
                 );*/
-            var bookDetail = await _bookRepository.GetAsync(
+            var bookDetail = await _bookViewRepository.GetAsync(
                 filter: book => book.BookId == query.Dto.Id
                 );
             var bookDto = _mapper.Map<BookDetailResponseDto>(bookDetail);

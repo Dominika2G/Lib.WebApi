@@ -6,25 +6,23 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Lib.Shared.Data.Entities
 {
-    // Book
-    public class BookConfiguration : IEntityTypeConfiguration<Book>
+    // BookView
+    public class BookViewConfiguration : IEntityTypeConfiguration<BookView>
     {
-        public void Configure(EntityTypeBuilder<Book> builder)
+        public void Configure(EntityTypeBuilder<BookView> builder)
         {
-            builder.ToTable("Book", "dbo");
-            builder.HasKey(x => x.BookId).HasName("PK_Book").IsClustered();
+            builder.ToView("BookView", "dbo");
+            builder.HasNoKey();
 
-            builder.Property(x => x.BookId).HasColumnName(@"BookId").HasColumnType("bigint").IsRequired().ValueGeneratedOnAdd().UseIdentityColumn();
+            builder.Property(x => x.FirstName).HasColumnName(@"FirstName").HasColumnType("varchar(50)").IsRequired().IsUnicode(false).HasMaxLength(50);
+            builder.Property(x => x.LastName).HasColumnName(@"LastName").HasColumnType("varchar(50)").IsRequired().IsUnicode(false).HasMaxLength(50);
+            builder.Property(x => x.BookId).HasColumnName(@"BookId").HasColumnType("bigint").IsRequired();
             builder.Property(x => x.Title).HasColumnName(@"Title").HasColumnType("varchar(250)").IsRequired().IsUnicode(false).HasMaxLength(250);
-            builder.Property(x => x.AuthorId).HasColumnName(@"AuthorId").HasColumnType("bigint").IsRequired();
             builder.Property(x => x.Description).HasColumnName(@"Description").HasColumnType("varchar(500)").IsRequired().IsUnicode(false).HasMaxLength(500);
             builder.Property(x => x.Cover).HasColumnName(@"Cover").HasColumnType("varbinary(max)").IsRequired(false);
             builder.Property(x => x.BarCode).HasColumnName(@"BarCode").HasColumnType("varchar(250)").IsRequired().IsUnicode(false).HasMaxLength(250);
             builder.Property(x => x.IsAvailable).HasColumnName(@"IsAvailable").HasColumnType("bit").IsRequired();
             builder.Property(x => x.IsReserved).HasColumnName(@"IsReserved").HasColumnType("bit").IsRequired();
-
-            // Foreign keys
-            builder.HasOne(a => a.Author).WithMany(b => b.Books).HasForeignKey(c => c.AuthorId).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Book_Author");
         }
     }
 

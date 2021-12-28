@@ -36,12 +36,12 @@ public abstract class ChangeBookAvailable
                 return "Nie znaleziono książki";
             }
             var available = currentBook.IsAvailable;
-            if(available == 1)
+            if(available == true)
             {
-                currentBook.IsAvailable = 0;
+                currentBook.IsAvailable = false;
             }else
             {
-                currentBook.IsAvailable = 1;
+                currentBook.IsAvailable = true;
             }
 
             _bookRepository.Update(currentBook);

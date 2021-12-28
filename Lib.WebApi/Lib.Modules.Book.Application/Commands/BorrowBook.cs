@@ -33,7 +33,7 @@ public class BorrowBook
                 UserId = command.Dto.UserId,
                 BookId = command.Dto.BookId,
                 LoanDate = DateTime.Today,
-                ReturnDate = 14
+                ReturnDate = DateTime.Today
             };
 
             await _borrowRepository.AddAsync(newBorrow);

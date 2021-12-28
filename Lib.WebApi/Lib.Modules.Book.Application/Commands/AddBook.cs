@@ -32,7 +32,7 @@ public abstract class AddBook
                 Title = command.Dto.Title,
                 AuthorId = command.Dto.AuthorId,
                 Description = command.Dto.Description,
-                Cover = command.Dto.Cover,
+                Cover = null,
                 BarCode = command.Dto.BarCode,
                 IsAvailable = command.Dto.IsAvailable
             };

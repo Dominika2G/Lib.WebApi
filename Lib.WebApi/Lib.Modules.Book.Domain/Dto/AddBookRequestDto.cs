@@ -13,6 +13,6 @@ public class AddBookRequestDto
     public long AuthorId { get; set; }
     public string Cover { get; set; }
     public string BarCode { get; set; }
-    public int IsAvailable { get; set; }
+    public bool IsAvailable { get; set; }
 
 }
