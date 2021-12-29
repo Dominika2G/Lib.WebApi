@@ -17,6 +17,8 @@ public class AuthorProfile : Profile
             .ForMember(author => author.FirstName,
                 opt => opt.MapFrom(x => x.FirstName))
             .ForMember(author => author.LastName,
-                opt => opt.MapFrom(x => x.LastName));
+                opt => opt.MapFrom(x => x.LastName))
+            .ForMember(author => author.AuthorId,
+                opt => opt.MapFrom(x => x.AuthorId));
     }
 }

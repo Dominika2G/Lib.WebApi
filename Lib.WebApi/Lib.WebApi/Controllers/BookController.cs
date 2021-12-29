@@ -27,7 +27,7 @@ namespace Lib.WebApi.Controllers
         }
 
         [HttpGet("AllBooks")]
-        public async Task<ActionResult<string>> AllBooks()
+        public async Task<ActionResult<GetAllBooksDto>> AllBooks()
         {
             var result = await Mediator.Send(new GetAllBooks.Query());
             return Ok(result);

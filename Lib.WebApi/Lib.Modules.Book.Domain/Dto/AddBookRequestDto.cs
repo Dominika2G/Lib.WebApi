@@ -13,7 +13,5 @@ public class AddBookRequestDto
     public long AuthorId { get; set; }
     public byte[] Cover { get; set; }
     public string BarCode { get; set; }
-    public bool IsAvailable { get; set; }
-    public bool IsReserved { get; set; }
 
 }

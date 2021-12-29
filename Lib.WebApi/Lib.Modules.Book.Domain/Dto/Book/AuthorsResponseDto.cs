@@ -8,6 +8,7 @@ namespace Lib.Modules.Book.Domain.Dto.Book;
 
 public class AuthorsResponseDto
 {
+    public long AuthorId { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
 }

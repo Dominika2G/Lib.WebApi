@@ -34,7 +34,7 @@ public abstract class AddBook
                 Description = command.Dto.Description,
                 Cover = null,
                 BarCode = command.Dto.BarCode,
-                IsAvailable = command.Dto.IsAvailable,
+                IsAvailable = true,
                 IsReserved = false
             };
 
