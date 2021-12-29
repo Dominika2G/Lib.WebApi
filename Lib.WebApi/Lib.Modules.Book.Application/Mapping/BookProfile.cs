@@ -42,5 +42,9 @@ public class BookProfile : Profile
                 opt => opt.MapFrom(x => x.FirstName))
             .ForMember(book => book.AuthorLastName,
                 opt => opt.MapFrom(x => x.LastName));
+
+        CreateMap<Borrow, GetUsersBookResponseDto>()
+            .ForMember(borrow => borrow.BookId,
+                opt => opt.MapFrom(x => x.BookId));
     }
 }

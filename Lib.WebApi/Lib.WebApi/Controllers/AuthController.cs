@@ -4,6 +4,7 @@ using Lib.Modules.Auth.Domain.Dtos.Authenticated;
 using Lib.Modules.Auth.Domain.Dtos.ChangePassword;
 using Lib.Modules.Auth.Domain.Dtos.Login;
 using Lib.Modules.Auth.Domain.Dtos.Register;
+using Lib.Modules.Auth.Domain.Dtos.User;
 using Lib.Shared.Abstractions.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -48,14 +49,18 @@ public class AuthController : BaseController
         return Ok(result);
     }
 
-
-    //TODO 
-    //Niedziałająca metoda
 /*    [Authorize]*/
     [HttpPost("changePassword")]
     public async Task<ActionResult<string>> Changepassword([FromBody] ChangePasswordRequestDto requestDto)
     {
         var result = await Mediator.Send(new ChangePassword.Command() { Dto = requestDto });
+        return Ok(result);
+    }
+
+    [HttpPost("editUser")]
+    public async Task<ActionResult<string>> EditUser([FromBody] EditUserRequestDto requestDto)
+    {
+        var result = await Mediator.Send(new EditUser.Command() { Dto = requestDto });
         return Ok(result);
     }
 }

@@ -47,10 +47,24 @@ namespace Lib.WebApi.Controllers
             return Ok(result);
         }
 
+        [HttpPost("ChangeBookReservation")]
+        public async Task<ActionResult<string>> ChangeBookReservation([FromBody] ChangeReservationRequestDto requestDto)
+        {
+            var result = await Mediator.Send(new ChangeBookReservation.Command() { Dto = requestDto });
+            return Ok(result);
+        }
+
         [HttpGet("GetAuthors")]
         public async Task<ActionResult<List<AuthorsResponseDto>>> GetAuthors()
         {
             var result = await Mediator.Send(new GetAutors.Query());
+            return Ok(result);
+        }
+
+        [HttpGet("GetUserBooks")]
+        public async Task<ActionResult<List<AuthorsResponseDto>>> GetUserBooks()
+        {
+            var result = await Mediator.Send(new GetUserBooks.Query());
             return Ok(result);
         }
 
