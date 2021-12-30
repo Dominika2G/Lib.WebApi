@@ -1,6 +1,5 @@
 ﻿using Lib.Modules.Book.Domain.Dto.Book;
 using Lib.Modules.Book.Domain.Interfaces;
-using Lib.Shared.Data.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Lib.Modules.Book.Application.Commands;
 
-public class BorrowBook
+public class ReturnBook
 {
     public class Command : IRequest<string>
     {
@@ -30,27 +29,27 @@ public class BorrowBook
 
         public async Task<string> Handle(Command command, CancellationToken cancellationToken)
         {
-            var newBorrow = new Borrow
-            {
-                UserId = command.Dto.UserId,
-                BookId = command.Dto.BookId,
-                LoanDate = DateTime.Today,
-                ReturnDate = DateTime.Today.AddDays(14),
-                RentalPeriod = 14
-            };
+            var findBorrowedBook = await _borrowRepository.GetAsync(
+                filter: borrow => borrow.UserId == command.Dto.UserId && borrow.BookId == command.Dto.BookId   
+                );
 
-            await _borrowRepository.AddAsync(newBorrow);
+            if (findBorrowedBook == null)
+            {
+                return "Nie znaleziono rekordu do usuniecia";
+            }
+
+            _borrowRepository.Delete(findBorrowedBook);
 
             var findBook = await _bookRepository.GetAsync(
                 filter: book => book.BookId == command.Dto.BookId
                 );
-            if(findBook == null)
+            if (findBook == null)
             {
                 return "Nie znaleziono ksiązki";
             }
 
             findBook.IsReserved = false;
-            findBook.IsAvailable = false;
+            findBook.IsAvailable = true;
 
             _bookRepository.Update(findBook);
 

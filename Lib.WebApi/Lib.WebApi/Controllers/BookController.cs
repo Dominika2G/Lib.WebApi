@@ -74,5 +74,19 @@ namespace Lib.WebApi.Controllers
             var result = await Mediator.Send(new BorrowBook.Command() { Dto = requestDto });
             return Ok(result);
         }
+
+        [HttpPost("ReturnBook")]
+        public async Task<ActionResult<string>> ReturnBook([FromBody] BorrowRequestDto requestDto)
+        {
+            var result = await Mediator.Send(new ReturnBook.Command() { Dto = requestDto });
+            return Ok(result);
+        }
+
+        [HttpPost("BookReservation")]
+        public async Task<ActionResult<string>> BookReservation([FromBody] BorrowRequestDto requestDto)
+        {
+            var result = await Mediator.Send(new BookReservation.Command() { Dto = requestDto });
+            return Ok(result);
+        }
     }
 }

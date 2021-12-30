@@ -43,7 +43,7 @@ public class AuthController : BaseController
     }
 
     [HttpGet("getUsers")]
-    public async Task<ActionResult<AuthenticatedResponseDto>> GetUsers()
+    public async Task<ActionResult<UsersCollectionResponseDto>> GetUsers()
     {
         var result = await Mediator.Send(new GetAllUsers.Query());
         return Ok(result);

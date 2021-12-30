@@ -13,7 +13,7 @@ public class UserProfile: Profile
 {
     public UserProfile()
     {
-        CreateMap<User, UserDetailDto>()
+        CreateMap<UserView, UserDetailDto>()
             .ForMember(user => user.UserId,
                 opt => opt.MapFrom(x => x.UserId))
             .ForMember(user => user.FirstName,
@@ -25,6 +25,8 @@ public class UserProfile: Profile
             .ForMember(user => user.Class,
                 opt => opt.MapFrom(x => x.Class))
             .ForMember(user => user.IsActive,
-                opt => opt.MapFrom(x => x.IsActive));
+                opt => opt.MapFrom(x => x.IsActive))
+            .ForMember(user => user.RoleName,
+                opt => opt.MapFrom(x => x.RoleName));
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Lib.Modules.Book.Application.Commands;
 
-public class BorrowBook
+public class BookReservation
 {
     public class Command : IRequest<string>
     {
@@ -44,17 +44,17 @@ public class BorrowBook
             var findBook = await _bookRepository.GetAsync(
                 filter: book => book.BookId == command.Dto.BookId
                 );
-            if(findBook == null)
+            if (findBook == null)
             {
                 return "Nie znaleziono ksiązki";
             }
 
-            findBook.IsReserved = false;
-            findBook.IsAvailable = false;
+            findBook.IsReserved = true;
+            findBook.IsAvailable = true;
 
             _bookRepository.Update(findBook);
 
-            return "Wypożyczono";
+            return "zarezerwowano";
         }
     }
 }

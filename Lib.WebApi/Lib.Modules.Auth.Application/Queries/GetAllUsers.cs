@@ -20,10 +20,10 @@ public class GetAllUsers
 
     public class Handler : IRequestHandler<Query, UsersCollectionResponseDto>
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUserViewRepository _userRepository;
         private readonly IMapper _mapper;
 
-        public Handler(IUserRepository userRepository, IMapper mapper)
+        public Handler(IUserViewRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
             _mapper = mapper;

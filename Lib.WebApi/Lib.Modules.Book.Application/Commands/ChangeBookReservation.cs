@@ -35,13 +35,15 @@ public class ChangeBookReservation
             {
                 return "Nie znaleziono książki";
             }
-            var reserved = currentBook.IsReserved;
+            /*var reserved = currentBook.IsReserved;
             if (reserved == command.Dto.IsReserved)
             {
                 return "Stan rezerwacji nie uległ zmianie";
             }
 
-            currentBook.IsReserved = command.Dto.IsReserved;
+            currentBook.IsReserved = command.Dto.IsReserved;*/
+            currentBook.IsAvailable = false;
+            currentBook.IsReserved = false;
 
             _bookRepository.Update(currentBook);
 

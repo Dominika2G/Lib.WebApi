@@ -44,6 +44,7 @@ public abstract class BaseCrudRepository<TEntity> : BaseReadOnlyRepository<TEnti
     {
         DbSet.Attach(entity);
         SetDeleted(entity);
+        Context.SaveChanges();
     }
 
     private void SetModified(TEntity entity)
