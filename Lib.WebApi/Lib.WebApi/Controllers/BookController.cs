@@ -95,5 +95,12 @@ namespace Lib.WebApi.Controllers
             var result = await Mediator.Send(new GetBookStatistics.Query());
             return Ok(result);
         }
+
+        [HttpGet("GetSelectedBook")]
+        public async Task<ActionResult<GetAllBooksDto>> GetSelectedBook([FromQuery] SelectedBookRequestDto requestDto)
+        {
+            var result = await Mediator.Send(new GetSelectedBook.Query() { Dto = requestDto });
+            return Ok(result);
+        }
     }
 }
