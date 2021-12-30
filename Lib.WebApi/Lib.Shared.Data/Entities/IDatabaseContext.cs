@@ -23,6 +23,7 @@ namespace Lib.Shared.Data.Entities
         DbSet<Book> Books { get; set; } // Book
         DbSet<BookView> BookViews { get; set; } // BookView
         DbSet<Borrow> Borrows { get; set; } // Borrows
+        DbSet<BorrowView> BorrowViews { get; set; } // BorrowView
         DbSet<Comment> Comments { get; set; } // Comment
         DbSet<CommentsBook> CommentsBooks { get; set; } // CommentsBook
         DbSet<Role> Roles { get; set; } // Role

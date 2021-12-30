@@ -62,9 +62,9 @@ namespace Lib.WebApi.Controllers
         }
 
         [HttpGet("GetUserBooks")]
-        public async Task<ActionResult<List<AuthorsResponseDto>>> GetUserBooks()
+        public async Task<ActionResult<List<AuthorsResponseDto>>> GetUserBooks([FromQuery] BookDetailRequestDto requestDto)
         {
-            var result = await Mediator.Send(new GetUserBooks.Query());
+            var result = await Mediator.Send(new GetUserBooks.Query() { Dto = requestDto });
             return Ok(result);
         }
 
@@ -86,6 +86,13 @@ namespace Lib.WebApi.Controllers
         public async Task<ActionResult<string>> BookReservation([FromBody] BorrowRequestDto requestDto)
         {
             var result = await Mediator.Send(new BookReservation.Command() { Dto = requestDto });
+            return Ok(result);
+        }
+
+        [HttpGet("GetStatistics")]
+        public async Task<ActionResult<List<AuthorsResponseDto>>> GetStatistics()
+        {
+            var result = await Mediator.Send(new GetBookStatistics.Query());
             return Ok(result);
         }
     }

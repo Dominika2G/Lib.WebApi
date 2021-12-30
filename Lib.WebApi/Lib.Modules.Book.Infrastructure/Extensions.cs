@@ -15,6 +15,7 @@ public static class Extensions
         services.AddScoped<IAuthorRepository, AuthorRepository>();
         services.AddScoped<IBorrowRepository, BorrowRepository>();
         services.AddScoped<IBookViewRepository, BookViewRepository>();  
+        services.AddScoped<IBorrowViewRepository, BorrowViewRepository>();
         return services;
     }
 }
