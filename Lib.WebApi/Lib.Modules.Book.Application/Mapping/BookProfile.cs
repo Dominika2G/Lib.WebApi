@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Lib.Modules.Book.Application.Queries;
 using Lib.Modules.Book.Domain.Dto.Book;
 using Lib.Shared.Data.Entities;
 

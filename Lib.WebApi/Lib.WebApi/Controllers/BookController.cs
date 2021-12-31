@@ -4,8 +4,10 @@ using Lib.Modules.Book.Application.Queries;
 using Lib.Modules.Book.Domain.Dto;
 using Lib.Modules.Book.Domain.Dto.Book;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Lib.WebApi.Controllers
@@ -25,10 +27,11 @@ namespace Lib.WebApi.Controllers
             var result = await Mediator.Send(new AddAuthor.Command() { Dto = requestDto });
             return Ok(result);
         }
-
+        [Authorize]
         [HttpGet("AllBooks")]
         public async Task<ActionResult<GetAllBooksDto>> AllBooks()
         {
+            //var userId = User.Claims.First(x => x.Type == "UserID");
             var result = await Mediator.Send(new GetAllBooks.Query());
             return Ok(result);
         }
@@ -100,6 +103,13 @@ namespace Lib.WebApi.Controllers
         public async Task<ActionResult<GetAllBooksDto>> GetSelectedBook([FromQuery] SelectedBookRequestDto requestDto)
         {
             var result = await Mediator.Send(new GetSelectedBook.Query() { Dto = requestDto });
+            return Ok(result);
+        }
+
+        [HttpGet("GetBooksinformation")]
+        public async Task<ActionResult<BooksStatisticsInfResponseDto>> GetBooksInformation()
+        {
+            var result = await Mediator.Send(new GetAllBookInformation.Query());
             return Ok(result);
         }
     }
