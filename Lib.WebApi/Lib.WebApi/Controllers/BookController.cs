@@ -125,5 +125,14 @@ namespace Lib.WebApi.Controllers
             var result = await Mediator.Send(new GetAllBookInformation.Query());
             return Ok(result);
         }
+
+        [Authorize]
+        [HttpPost("AddComment")]
+        public async Task<ActionResult<string>> AddComment([FromBody]AddCommentRequestDto requestDto)
+        {
+            var userId = User.Claims.First(x => x.Type == "UserID");
+            var result = await Mediator.Send(new AddComment.Command() { Dto = requestDto, UserId = long.Parse(userId.Value) });
+            return Ok(result);
+        }
     }
 }
