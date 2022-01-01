@@ -17,6 +17,7 @@ public abstract class ChangePassword
     public class Command : IRequest<string>
     {
         public ChangePasswordRequestDto Dto { get; set; }
+        public string Email { get; set; }
     }
 
     public class Handler : IRequestHandler<Command, string>
@@ -30,7 +31,7 @@ public abstract class ChangePassword
 
         public async Task<string> Handle(Command command, CancellationToken cancellationToken)
         {
-            var email = command.Dto.Email;
+            var email = command.Email;
 
             var currentUser = await _userRepository.GetAsync(
                 filter: user => user.Email == email

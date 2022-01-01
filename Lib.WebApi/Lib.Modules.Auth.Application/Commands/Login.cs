@@ -36,7 +36,7 @@ public abstract class Login
             var email = command.Dto.Email;
 
             var currentUser = await _userRepository.GetAsync(
-                filter: user => user.Email == email
+                filter: user => user.Email == email && user.IsActive == true
                 );
 
             if (currentUser != null && _userRepository.CheckPassword(currentUser.PasswordHash, PasswordProtection.Sha256Hash(command.Dto.Password)))
@@ -45,7 +45,8 @@ public abstract class Login
                 {
                     Subject = new ClaimsIdentity(new Claim[] {
                         new Claim("UserID", currentUser.UserId.ToString()),
-                        new Claim("RoleId", currentUser.RoleId.ToString())
+                        new Claim("RoleId", currentUser.RoleId.ToString()),
+                        new Claim("Email", currentUser.Email)
                     }),
                     Expires = DateTime.UtcNow.AddDays(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("1234567890123456")), SecurityAlgorithms.HmacSha256Signature)

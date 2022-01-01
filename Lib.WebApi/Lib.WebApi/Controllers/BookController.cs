@@ -14,6 +14,7 @@ namespace Lib.WebApi.Controllers
 {
     public class BookController : BaseController
     {
+        [Authorize]
         [HttpPost("AddBook")]
         public async Task<ActionResult<string>> AddBook([FromBody] AddBookRequestDto requestDto)
         {
@@ -21,6 +22,7 @@ namespace Lib.WebApi.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpPost("AddAuthor")]
         public async Task<ActionResult<string>> AddAuthor([FromBody] AddAuthorRequestDto requestDto)
         {
@@ -31,11 +33,12 @@ namespace Lib.WebApi.Controllers
         [HttpGet("AllBooks")]
         public async Task<ActionResult<GetAllBooksDto>> AllBooks()
         {
-            //var userId = User.Claims.First(x => x.Type == "UserID");
+            var userId = User.Claims.First(x => x.Type == "UserID");
             var result = await Mediator.Send(new GetAllBooks.Query());
             return Ok(result);
         }
 
+        [Authorize]
         [HttpGet("BookDetail")]
         public async Task<ActionResult<BookDetailResponseDto>> BookDetail([FromQuery] BookDetailRequestDto requestDto)
         {
@@ -43,6 +46,7 @@ namespace Lib.WebApi.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpPost("ChangeBookAvailable")]
         public async Task<ActionResult<string>> ChangeBookAvailable([FromBody] ChangeAvailableRequestDto requestDto)
         {
@@ -50,6 +54,7 @@ namespace Lib.WebApi.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpPost("ChangeBookReservation")]
         public async Task<ActionResult<string>> ChangeBookReservation([FromBody] ChangeReservationRequestDto requestDto)
         {
@@ -57,6 +62,7 @@ namespace Lib.WebApi.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpGet("GetAuthors")]
         public async Task<ActionResult<List<AuthorsResponseDto>>> GetAuthors()
         {
@@ -64,6 +70,7 @@ namespace Lib.WebApi.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpGet("GetUserBooks")]
         public async Task<ActionResult<List<AuthorsResponseDto>>> GetUserBooks([FromQuery] BookDetailRequestDto requestDto)
         {
@@ -71,6 +78,7 @@ namespace Lib.WebApi.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpPost("BorrowBook")]
         public async Task<ActionResult<string>> BorrowBook([FromBody] BorrowRequestDto requestDto)
         {
@@ -78,6 +86,7 @@ namespace Lib.WebApi.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpPost("ReturnBook")]
         public async Task<ActionResult<string>> ReturnBook([FromBody] BorrowRequestDto requestDto)
         {
@@ -85,6 +94,7 @@ namespace Lib.WebApi.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpPost("BookReservation")]
         public async Task<ActionResult<string>> BookReservation([FromBody] BorrowRequestDto requestDto)
         {
@@ -92,6 +102,7 @@ namespace Lib.WebApi.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpGet("GetStatistics")]
         public async Task<ActionResult<List<AuthorsResponseDto>>> GetStatistics()
         {
@@ -99,6 +110,7 @@ namespace Lib.WebApi.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpGet("GetSelectedBook")]
         public async Task<ActionResult<GetAllBooksDto>> GetSelectedBook([FromQuery] SelectedBookRequestDto requestDto)
         {
@@ -106,6 +118,7 @@ namespace Lib.WebApi.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpGet("GetBooksinformation")]
         public async Task<ActionResult<BooksStatisticsInfResponseDto>> GetBooksInformation()
         {

@@ -28,6 +28,7 @@ public class AuthController : BaseController
         return Ok(response);
     }
 
+    [Authorize]
     [HttpPost("register")]
     public async Task<ActionResult<string>> Register([FromBody] RegisterRequestDto requestDto)
     {
@@ -42,6 +43,7 @@ public class AuthController : BaseController
         return Ok(result);
     }
 
+    [Authorize]
     [HttpGet("getUsers")]
     public async Task<ActionResult<UsersCollectionResponseDto>> GetUsers()
     {
@@ -49,14 +51,16 @@ public class AuthController : BaseController
         return Ok(result);
     }
 
-/*    [Authorize]*/
+    [Authorize]
     [HttpPost("changePassword")]
     public async Task<ActionResult<string>> Changepassword([FromBody] ChangePasswordRequestDto requestDto)
     {
-        var result = await Mediator.Send(new ChangePassword.Command() { Dto = requestDto });
+        var email = User.Claims.First(x => x.Type == "Email");
+        var result = await Mediator.Send(new ChangePassword.Command() { Dto = requestDto, Email = email.Value });
         return Ok(result);
     }
 
+    [Authorize]
     [HttpPost("editUser")]
     public async Task<ActionResult<string>> EditUser([FromBody] EditUserRequestDto requestDto)
     {
@@ -64,6 +68,7 @@ public class AuthController : BaseController
         return Ok(result);
     }
 
+    [Authorize]
     [HttpGet("getUsersStatistics")]
     public async Task<ActionResult<UserStatisticsResponseDto>> GetUsersStatistics()
     {
