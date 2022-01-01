@@ -42,7 +42,9 @@ public class BookProfile : Profile
             .ForMember(book => book.AuthorFirstName,
                 opt => opt.MapFrom(x => x.FirstName))
             .ForMember(book => book.AuthorLastName,
-                opt => opt.MapFrom(x => x.LastName));
+                opt => opt.MapFrom(x => x.LastName))
+            .ForMember(book => book.BookId,
+                opt => opt.MapFrom(x => x.BookId));
 
         /*CreateMap<Borrow, GetUsersBookResponseDto>()
             .ForMember(borrow => borrow.BookId,

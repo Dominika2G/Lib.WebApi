@@ -25,6 +25,7 @@ namespace Lib.Shared.Data.Entities
         DbSet<Borrow> Borrows { get; set; } // Borrows
         DbSet<BorrowView> BorrowViews { get; set; } // BorrowView
         DbSet<Comment> Comments { get; set; } // Comment
+        DbSet<CommentsView> CommentsView { get; set; }
         DbSet<CommentsBook> CommentsBooks { get; set; } // CommentsBook
         DbSet<Role> Roles { get; set; } // Role
         DbSet<User> Users { get; set; } // User

@@ -38,12 +38,26 @@ namespace Lib.WebApi.Controllers
             return Ok(result);
         }
 
-        [Authorize]
+        /*[Authorize]
         [HttpGet("BookDetail")]
         public async Task<ActionResult<BookDetailResponseDto>> BookDetail([FromQuery] BookDetailRequestDto requestDto)
         {
             var result = await Mediator.Send(new GetBookDetail.Query() { Dto = requestDto });
+            var commentResult = await Mediator.Send(new GetBookComments.Query());
             return Ok(result);
+        }*/
+        [Authorize]
+        [HttpGet("BookDetail")]
+        public async Task<ActionResult<BookDetailWithCommentsResponseDto>> BookDetail([FromQuery] BookDetailRequestDto requestDto)
+        {
+            var result = await Mediator.Send(new GetBookDetail.Query() { Dto = requestDto });
+            var commentResult = await Mediator.Send(new GetBookComments.Query() { Dto = requestDto} );
+            var newResult = new BookDetailWithCommentsResponseDto()
+            {
+                BookDetails = result,
+                CommentList = commentResult
+            };
+            return Ok(newResult);
         }
 
         [Authorize]
@@ -132,6 +146,15 @@ namespace Lib.WebApi.Controllers
         {
             var userId = User.Claims.First(x => x.Type == "UserID");
             var result = await Mediator.Send(new AddComment.Command() { Dto = requestDto, UserId = long.Parse(userId.Value) });
+            return Ok(result);
+        }
+
+        [Authorize]
+        [HttpGet("AllComments")]
+        public async Task<ActionResult<List<CommentDto>>> AllComments()
+        {
+            //var userId = User.Claims.First(x => x.Type == "UserID");
+            var result = await Mediator.Send(new GetBookComments.Query());
             return Ok(result);
         }
     }

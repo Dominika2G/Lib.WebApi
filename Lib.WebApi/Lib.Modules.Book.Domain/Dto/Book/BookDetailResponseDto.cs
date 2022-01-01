@@ -8,6 +8,7 @@ namespace Lib.Modules.Book.Domain.Dto.Book;
 
 public class BookDetailResponseDto
 {
+    public long BookId { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public bool IsAvailable { get; set; }

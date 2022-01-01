@@ -35,6 +35,7 @@ namespace Lib.Shared.Data.Entities
         public DbSet<Borrow> Borrows { get; set; } // Borrows
         public DbSet<BorrowView> BorrowViews { get; set; } // BorrowView
         public DbSet<Comment> Comments { get; set; } // Comment
+        public DbSet<CommentsView> CommentsView { get; set; }
         public DbSet<CommentsBook> CommentsBooks { get; set; } // CommentsBook
         public DbSet<Role> Roles { get; set; } // Role
         public DbSet<User> Users { get; set; } // User
@@ -67,6 +68,7 @@ namespace Lib.Shared.Data.Entities
             modelBuilder.ApplyConfiguration(new BorrowConfiguration());
             modelBuilder.ApplyConfiguration(new BorrowViewConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
+            modelBuilder.ApplyConfiguration(new CommentsViewConfiguration());
             modelBuilder.ApplyConfiguration(new CommentsBookConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
