@@ -75,5 +75,13 @@ public class AuthController : BaseController
         var result = await Mediator.Send(new GetUsersStatistics.Query());
         return Ok(result);
     }
+
+    [Authorize]
+    [HttpGet("getUser")]
+    public async Task<ActionResult<UserDetailDto>> GetUser([FromQuery] long requestDto)
+    {
+        var result = await Mediator.Send(new GetUserById.Query() { Dto = requestDto });
+        return Ok(result);
+    }
 }
 
