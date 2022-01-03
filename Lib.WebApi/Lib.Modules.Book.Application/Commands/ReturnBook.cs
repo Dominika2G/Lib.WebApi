@@ -13,7 +13,7 @@ public class ReturnBook
 {
     public class Command : IRequest<string>
     {
-        public BorrowRequestDto Dto { get; set; }
+        public ReturnBookRequestDto Dto { get; set; }
     }
 
     public class Handler : IRequestHandler<Command, string>
@@ -30,7 +30,7 @@ public class ReturnBook
         public async Task<string> Handle(Command command, CancellationToken cancellationToken)
         {
             var findBorrowedBook = await _borrowRepository.GetAsync(
-                filter: borrow => borrow.UserId == command.Dto.UserId && borrow.BookId == command.Dto.BookId   
+                filter: borrow => borrow.BookId == command.Dto.BookId   
                 );
 
             if (findBorrowedBook == null)
