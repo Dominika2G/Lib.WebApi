@@ -10,4 +10,5 @@ public class BookDetailWithCommentsResponseDto
 {
     public BookDetailResponseDto BookDetails { get; set; }
     public List<CommentDto> CommentList { get; set; }
+    public float Rating { get; set; }
 }

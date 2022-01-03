@@ -52,10 +52,20 @@ namespace Lib.WebApi.Controllers
         {
             var result = await Mediator.Send(new GetBookDetail.Query() { Dto = requestDto });
             var commentResult = await Mediator.Send(new GetBookComments.Query() { Dto = requestDto} );
+            float rating = 0;
+            foreach(var tmp in commentResult)
+            {
+                rating += tmp.Rating;
+            }
+            if(commentResult.Count > 0)
+            {
+                rating /= commentResult.Count;
+            }
             var newResult = new BookDetailWithCommentsResponseDto()
             {
                 BookDetails = result,
-                CommentList = commentResult
+                CommentList = commentResult,
+                Rating = rating
             };
             return Ok(newResult);
         }
