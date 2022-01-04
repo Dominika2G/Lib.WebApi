@@ -103,6 +103,19 @@ namespace Lib.WebApi.Controllers
         }
 
         [Authorize]
+        [HttpGet("GetUserLoginBooks")]
+        public async Task<ActionResult<List<AuthorsResponseDto>>> GetUserLoginBooks()
+        {
+            var userId = User.Claims.First(x => x.Type == "UserID");
+            var requestDto = new BookDetailRequestDto()
+            {
+                Id = long.Parse(userId.Value)
+            };
+            var result = await Mediator.Send(new GetUserBooks.Query() { Dto = requestDto });
+            return Ok(result);
+        }
+
+        [Authorize]
         [HttpPost("BorrowBook")]
         public async Task<ActionResult<string>> BorrowBook([FromBody] BorrowRequestDto requestDto)
         {
