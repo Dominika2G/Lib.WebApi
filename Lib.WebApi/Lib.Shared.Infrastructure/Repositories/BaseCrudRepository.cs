@@ -36,7 +36,6 @@ public abstract class BaseCrudRepository<TEntity> : BaseReadOnlyRepository<TEnti
     {
         DbSet.Attach(entity);
         SetModified(entity);
-        //Zastanowić się czy ten element na pewno ma być w tym miejscu a nie w Command?
         Context.SaveChanges();
     }
 

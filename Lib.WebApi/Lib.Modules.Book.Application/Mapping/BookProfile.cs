@@ -46,10 +46,6 @@ public class BookProfile : Profile
             .ForMember(book => book.BookId,
                 opt => opt.MapFrom(x => x.BookId));
 
-        /*CreateMap<Borrow, GetUsersBookResponseDto>()
-            .ForMember(borrow => borrow.BookId,
-                opt => opt.MapFrom(x => x.BookId));*/
-
         CreateMap<BorrowView, GetUsersBookResponseDto>()
             .ForMember(borrow => borrow.BookId,
                 opt => opt.MapFrom(x => x.BookId))

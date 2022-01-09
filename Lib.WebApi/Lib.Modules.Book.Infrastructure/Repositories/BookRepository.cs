@@ -17,9 +17,4 @@ public class BookRepository : BaseCrudRepository<Lib.Shared.Data.Entities.Book>,
     {
         _context = context;
     }
-
-    public string getData()
-    {
-        return "Jestem modułem książek";
-    }
 }

@@ -11,6 +11,5 @@ namespace Lib.Modules.Auth.Domain.Interfaces;
 
 public interface IUserRepository: IBaseCrudRepository<User>
 {
-    string getData();
     bool CheckPassword(string userPassword, string dtoPassword);
 }
