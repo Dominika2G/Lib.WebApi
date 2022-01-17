@@ -39,7 +39,7 @@ namespace Lib.Modules.Auth.Application.Commands
                 };
 
                 await _userRepository.AddAsync(newUser);
-                return _userRepository.getData();
+                return "Dodano użytkownika";
             }
         }
     }

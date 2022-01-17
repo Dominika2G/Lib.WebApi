@@ -13,12 +13,13 @@ namespace Lib.Shared.Data.Entities
     {
         public long UserId { get; set; } // UserId (Primary key)
         public long RoleId { get; set; } // RoleId
-        public string FirstName { get; set; } // FirstName (length: 250)
-        public string LastName { get; set; } // LastName (length: 250)
-        public string Email { get; set; } // Email (length: 250)
+        public string FirstName { get; set; } // FirstName (length: 50)
+        public string LastName { get; set; } // LastName (length: 50)
+        public string Email { get; set; } // Email (length: 100)
         public string PasswordHash { get; set; } // PasswordHash (length: 250)
         public string Class { get; set; } // Class (length: 50)
-        public int IsActive { get; set; } // IsActive
+        public bool IsActive { get; set; } // IsActive
+        public byte[] UserImg { get; set; } // UserImg
 
         // Reverse navigation
 

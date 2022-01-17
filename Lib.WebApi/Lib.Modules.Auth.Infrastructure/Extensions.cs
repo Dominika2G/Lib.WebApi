@@ -13,6 +13,7 @@ namespace Lib.Modules.Auth.Infrastructure
 
             services.AddDbContext<IDatabaseContext, DatabaseContext>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserViewRepository, UserViewRepository>();
             return services;
         }
     }

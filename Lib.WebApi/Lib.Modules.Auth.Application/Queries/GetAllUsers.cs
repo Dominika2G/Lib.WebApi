@@ -1,4 +1,6 @@
-﻿using Lib.Modules.Auth.Domain.Interfaces;
+﻿using AutoMapper;
+using Lib.Modules.Auth.Domain.Dtos.User;
+using Lib.Modules.Auth.Domain.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,29 +13,35 @@ namespace Lib.Modules.Auth.Application.Queries;
 
 public class GetAllUsers
 {
-    public class Query : IRequest<string>
+    public class Query : IRequest<UsersCollectionResponseDto>
     {
 
     }
 
-    public class Handler : IRequestHandler<Query, string>
+    public class Handler : IRequestHandler<Query, UsersCollectionResponseDto>
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUserViewRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        public Handler(IUserRepository userRepository)
+        public Handler(IUserViewRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
-        public async Task<string> Handle(Query query, CancellationToken cancellationToken)
+        public async Task<UsersCollectionResponseDto> Handle(Query query, CancellationToken cancellationToken)
         {
 
             var userCollection = _userRepository.GetAllAsync().Result;
+            var userDto = _mapper.Map<List<UserDetailDto>>(userCollection);
             if(userCollection != null)
             {
-                return "Zwrócono kolekcję userów";
+                return new UsersCollectionResponseDto
+                {
+                    UsersCollection = userDto
+                };
             }
-            return "nie można zwrócić kolekcji userów";
+            return new UsersCollectionResponseDto();
         }
     }
 }

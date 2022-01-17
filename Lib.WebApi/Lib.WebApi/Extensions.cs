@@ -43,6 +43,7 @@ public static class Extensions
         services.AddSwaggerDocumentation();
         services.AddHttpContextAccessor();
         services.AddCorsPolicy(configuration);
+        services.AddAutoMapper(assembliesApplication);
         services.AddMediatR(assembliesApplication.ToArray());
         services.AddControllers().AddFluentValidation(s => s.RegisterValidatorsFromAssemblies(assembliesApplication));
 

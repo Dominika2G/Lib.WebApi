@@ -18,9 +18,10 @@ namespace Lib.Shared.Data.Entities
             builder.Property(x => x.Title).HasColumnName(@"Title").HasColumnType("varchar(250)").IsRequired().IsUnicode(false).HasMaxLength(250);
             builder.Property(x => x.AuthorId).HasColumnName(@"AuthorId").HasColumnType("bigint").IsRequired();
             builder.Property(x => x.Description).HasColumnName(@"Description").HasColumnType("varchar(500)").IsRequired().IsUnicode(false).HasMaxLength(500);
-            builder.Property(x => x.Cover).HasColumnName(@"Cover").HasColumnType("varchar(500)").IsRequired().IsUnicode(false).HasMaxLength(500);
+            builder.Property(x => x.Cover).HasColumnName(@"Cover").HasColumnType("varbinary(max)").IsRequired(false);
             builder.Property(x => x.BarCode).HasColumnName(@"BarCode").HasColumnType("varchar(250)").IsRequired().IsUnicode(false).HasMaxLength(250);
-            builder.Property(x => x.IsAvailable).HasColumnName(@"IsAvailable").HasColumnType("int").IsRequired();
+            builder.Property(x => x.IsAvailable).HasColumnName(@"IsAvailable").HasColumnType("bit").IsRequired();
+            builder.Property(x => x.IsReserved).HasColumnName(@"IsReserved").HasColumnType("bit").IsRequired();
 
             // Foreign keys
             builder.HasOne(a => a.Author).WithMany(b => b.Books).HasForeignKey(c => c.AuthorId).OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Book_Author");

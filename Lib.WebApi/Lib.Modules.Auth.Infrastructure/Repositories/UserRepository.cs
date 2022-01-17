@@ -19,10 +19,6 @@ public class UserRepository : BaseCrudRepository<User>, IUserRepository
     {
         _context = context;
     }
-    public string getData()
-    {
-        return "MediatR działa";
-    }
 
     public bool CheckPassword(string userPassword, string dtoPassword)
     {

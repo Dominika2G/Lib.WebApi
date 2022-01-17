@@ -31,17 +31,21 @@ namespace Lib.Shared.Data.Entities
 
         public DbSet<Author> Authors { get; set; } // Author
         public DbSet<Book> Books { get; set; } // Book
+        public DbSet<BookView> BookViews { get; set; } // BookView
         public DbSet<Borrow> Borrows { get; set; } // Borrows
+        public DbSet<BorrowView> BorrowViews { get; set; } // BorrowView
         public DbSet<Comment> Comments { get; set; } // Comment
+        public DbSet<CommentsView> CommentsView { get; set; }
         public DbSet<CommentsBook> CommentsBooks { get; set; } // CommentsBook
         public DbSet<Role> Roles { get; set; } // Role
         public DbSet<User> Users { get; set; } // User
+        public DbSet<UserView> UserViews { get; set; } // UserView
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=D-GORALCZYK2\SQLEXPRESS;Initial Catalog=LibraryDB2;Integrated Security=True;MultipleActiveResultSets=True");
+                optionsBuilder.UseSqlServer(@"Data Source=D-GORALCZYK2\SQLEXPRESS;Initial Catalog=LibraryDB3;Integrated Security=True;MultipleActiveResultSets=True");
             }
         }
 
@@ -60,11 +64,15 @@ namespace Lib.Shared.Data.Entities
 
             modelBuilder.ApplyConfiguration(new AuthorConfiguration());
             modelBuilder.ApplyConfiguration(new BookConfiguration());
+            modelBuilder.ApplyConfiguration(new BookViewConfiguration());
             modelBuilder.ApplyConfiguration(new BorrowConfiguration());
+            modelBuilder.ApplyConfiguration(new BorrowViewConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
+            modelBuilder.ApplyConfiguration(new CommentsViewConfiguration());
             modelBuilder.ApplyConfiguration(new CommentsBookConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new UserViewConfiguration());
         }
 
     }

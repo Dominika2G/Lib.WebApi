@@ -21,11 +21,15 @@ namespace Lib.Shared.Data.Entities
     {
         DbSet<Author> Authors { get; set; } // Author
         DbSet<Book> Books { get; set; } // Book
+        DbSet<BookView> BookViews { get; set; } // BookView
         DbSet<Borrow> Borrows { get; set; } // Borrows
+        DbSet<BorrowView> BorrowViews { get; set; } // BorrowView
         DbSet<Comment> Comments { get; set; } // Comment
+        DbSet<CommentsView> CommentsView { get; set; }
         DbSet<CommentsBook> CommentsBooks { get; set; } // CommentsBook
         DbSet<Role> Roles { get; set; } // Role
         DbSet<User> Users { get; set; } // User
+        DbSet<UserView> UserViews { get; set; } // UserView
 
         int SaveChanges();
         int SaveChanges(bool acceptAllChangesOnSuccess);

@@ -10,5 +10,4 @@ namespace Lib.Modules.Book.Domain.Interfaces;
 
 public interface IBookRepository : IBaseCrudRepository<Lib.Shared.Data.Entities.Book>
 {
-    string getData();
 }

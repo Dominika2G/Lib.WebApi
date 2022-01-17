@@ -15,14 +15,15 @@ namespace Lib.Shared.Data.Entities
         public string Title { get; set; } // Title (length: 250)
         public long AuthorId { get; set; } // AuthorId
         public string Description { get; set; } // Description (length: 500)
-        public string Cover { get; set; } // Cover (length: 500)
+        public byte[] Cover { get; set; } // Cover
         public string BarCode { get; set; } // BarCode (length: 250)
-        public int IsAvailable { get; set; } // IsAvailable
+        public bool IsAvailable { get; set; } // IsAvailable
+        public bool IsReserved { get; set; } // IsReserved
 
         // Reverse navigation
 
         /// <summary>
-        /// Child Borrows where [Borrows].[UserId] point to this entity (FK_Borrows_Book)
+        /// Child Borrows where [Borrows].[BookId] point to this entity (FK_Borrows_Book)
         /// </summary>
         public virtual ICollection<Borrow> Borrows { get; set; } // Borrows.FK_Borrows_Book
 

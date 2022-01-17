@@ -1,4 +1,6 @@
-﻿using Lib.Modules.Book.Domain.Interfaces;
+﻿using AutoMapper;
+using Lib.Modules.Book.Domain.Dto.Book;
+using Lib.Modules.Book.Domain.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,31 +12,36 @@ namespace Lib.Modules.Book.Application.Queries;
 
 public class GetAllBooks
 {
-    public class Query: IRequest<string>
+    public class Query: IRequest<GetAllBooksDto>
     {
         
     }
 
-    public class Handler : IRequestHandler<Query, string>
+    public class Handler : IRequestHandler<Query, GetAllBooksDto>
     {
-        private readonly IBookRepository _bookRepository;
+        private readonly IBookViewRepository _bookViewRepository;
+        private readonly IMapper _mapper;
 
-        public Handler(IBookRepository userRepository)
+        public Handler(IBookViewRepository bookViewRepository, IMapper mapper)
         {
-            _bookRepository = userRepository;
+            _bookViewRepository = bookViewRepository;
+            _mapper = mapper;
         }
 
-        public async Task<string> Handle(Query query, CancellationToken cancellationToken)
+        public async Task<GetAllBooksDto> Handle(Query query, CancellationToken cancellationToken)
         {
 
-            var bookCollection = _bookRepository.GetAllAsync().Result;
-
+            var bookCollection = _bookViewRepository.GetAllAsync().Result;
+            var bookDto = _mapper.Map<List<BookDetailsDto>>(bookCollection);
             if(bookCollection != null)
             {
-                return "Zwrócono kolekcję książek";
+                return new GetAllBooksDto
+                {
+                    BookDetails = bookDto
+                };
             }
 
-            return "Nie można zwrócić kolekcji książek";
+            return new GetAllBooksDto();
         }
     }
 }
